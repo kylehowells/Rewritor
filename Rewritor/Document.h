@@ -8,5 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Document : UIDocument
-    
+@property (nonatomic, readonly) NSString *originalText;
+@property (nonatomic, copy) NSString *text;
+-(BOOL)hasChangedToSave;
 @end
