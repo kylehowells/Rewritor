@@ -18,6 +18,9 @@
 	self.view = [[DocumentEditingView alloc] init];
 }
 
+// TODO: State restoration
+// TODO: Keyboard shortcuts: save/close/text size/open settings/share
+
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	

@@ -8,6 +8,7 @@
 #import "DocumentBrowserViewController.h"
 #import "Document.h"
 #import "DocumentViewController.h"
+#import "SettingsViewController.h"
 
 @interface DocumentBrowserViewController () <UIDocumentBrowserViewControllerDelegate>
 
@@ -86,7 +87,13 @@
 #pragma mark - Settings
 
 -(void)showSettings:(id)sender{
+	UINavigationController *navController = [[UINavigationController alloc] init];
 	
+	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+	
+	[navController pushViewController:settingsVC animated:NO];
+	
+	[self presentViewController:navController animated:YES completion:nil];
 }
 
 @end

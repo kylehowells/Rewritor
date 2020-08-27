@@ -14,13 +14,13 @@
 }
 
 - (id)contentsForType:(NSString*)typeName error:(NSError **)errorPtr {
-	NSLog(@"-[Document contentsForType:%@ error:]", typeName);
+	NSLog(@"-[Document %p contentsForType:%@ error:]", self, typeName);
     // Encode your document with an instance of NSData or NSFileWrapper
 	return [self.text dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (BOOL)loadFromContents:(id)contents ofType:(NSString *)typeName error:(NSError **)errorPtr {
-	NSLog(@"-[Document loadFromContents:%lu ofType:%@ error:]", (unsigned long)[(NSData*)contents length], typeName);
+	NSLog(@"-[Document %p loadFromContents:%lu ofType:%@ error:]", self, (unsigned long)[(NSData*)contents length], typeName);
     // Load your document from contents
 	
 	self.text = [[NSString alloc] initWithData:(NSData*)contents encoding:NSUTF8StringEncoding];
@@ -30,8 +30,8 @@
 }
 
 - (void)saveToURL:(NSURL *)url forSaveOperation:(UIDocumentSaveOperation)saveOperation completionHandler:(void (^)(BOOL))completionHandler{
-	[super saveToURL:url forSaveOperation:saveOperation completionHandler:completionHandler];
 	_originalText = self.text;
+	[super saveToURL:url forSaveOperation:saveOperation completionHandler:completionHandler];
 }
 
 

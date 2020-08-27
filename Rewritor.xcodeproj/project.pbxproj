@@ -18,6 +18,8 @@
 		CC4C19CE24F6C5E80042C535 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19CB24F6C5E80042C535 /* Document.m */; };
 		CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */; };
 		CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */; };
+		CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DA24F73AB50002CFCA /* SettingsViewController.m */; };
+		CC5285DE24F7458A0002CFCA /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		CC4C19D224F6D4A60042C535 /* DocumentEditingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentEditingView.h; sourceTree = "<group>"; };
 		CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentEditingView.m; sourceTree = "<group>"; };
 		CC4C19D524F6DC620042C535 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
+		CC5285D924F73AB50002CFCA /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		CC5285DA24F73AB50002CFCA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		CC5285DC24F7458A0002CFCA /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 				CC4C19C924F6C5E80042C535 /* DocumentViewController.m */,
 				CC4C19D224F6D4A60042C535 /* DocumentEditingView.h */,
 				CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */,
+				CC5285D924F73AB50002CFCA /* SettingsViewController.h */,
+				CC5285DA24F73AB50002CFCA /* SettingsViewController.m */,
+				CC5285DC24F7458A0002CFCA /* SettingTableViewCell.h */,
+				CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */,
 				CC4C19B724F6C3700042C535 /* Assets.xcassets */,
 				CC4C19B924F6C3700042C535 /* LaunchScreen.storyboard */,
 				CC4C19BC24F6C3700042C535 /* Info.plist */,
@@ -168,9 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5285DE24F7458A0002CFCA /* SettingTableViewCell.m in Sources */,
 				CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */,
 				CC4C19CC24F6C5E80042C535 /* DocumentViewController.m in Sources */,
 				CC4C19C624F6C5BD0042C535 /* DocumentBrowserViewController.m in Sources */,
+				CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */,
 				CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */,
 				CC4C19CE24F6C5E80042C535 /* Document.m in Sources */,
 				CC4C19AD24F6C36E0042C535 /* AppDelegate.m in Sources */,
