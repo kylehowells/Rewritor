@@ -17,6 +17,7 @@
 		_textView.font = [UIFont monospacedSystemFontOfSize:12 weight:UIFontWeightRegular];
 		_textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 		_textView.alwaysBounceVertical = YES;
+		//_textView.spellCheckingType = UITextSpellCheckingTypeNo;
 		[self addSubview:_textView];
 	}
 	return self;

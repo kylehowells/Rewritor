@@ -19,7 +19,7 @@
 		CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */; };
 		CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */; };
 		CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DA24F73AB50002CFCA /* SettingsViewController.m */; };
-		CC5285DE24F7458A0002CFCA /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */; };
+		CCFA7FC224F8884A00BE0BBC /* KHSettingRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +46,8 @@
 		CC4C19D524F6DC620042C535 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
 		CC5285D924F73AB50002CFCA /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		CC5285DA24F73AB50002CFCA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		CC5285DC24F7458A0002CFCA /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
-		CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingRow.h; sourceTree = "<group>"; };
+		CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingRow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +95,8 @@
 				CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */,
 				CC5285D924F73AB50002CFCA /* SettingsViewController.h */,
 				CC5285DA24F73AB50002CFCA /* SettingsViewController.m */,
-				CC5285DC24F7458A0002CFCA /* SettingTableViewCell.h */,
-				CC5285DD24F7458A0002CFCA /* SettingTableViewCell.m */,
+				CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */,
+				CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */,
 				CC4C19B724F6C3700042C535 /* Assets.xcassets */,
 				CC4C19B924F6C3700042C535 /* LaunchScreen.storyboard */,
 				CC4C19BC24F6C3700042C535 /* Info.plist */,
@@ -178,11 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC5285DE24F7458A0002CFCA /* SettingTableViewCell.m in Sources */,
 				CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */,
 				CC4C19CC24F6C5E80042C535 /* DocumentViewController.m in Sources */,
 				CC4C19C624F6C5BD0042C535 /* DocumentBrowserViewController.m in Sources */,
 				CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */,
+				CCFA7FC224F8884A00BE0BBC /* KHSettingRow.m in Sources */,
 				CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */,
 				CC4C19CE24F6C5E80042C535 /* Document.m in Sources */,
 				CC4C19AD24F6C36E0042C535 /* AppDelegate.m in Sources */,

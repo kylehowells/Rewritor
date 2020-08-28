@@ -6,16 +6,37 @@
 //
 
 #import "SettingsViewController.h"
-#import "SettingTableViewCell.h"
+#import "KHSettingRow.h"
 
-@interface SettingsViewController ()
+@interface SettingsViewController (){
+	NSArray <NSArray<KHSettingRow*>*>* sections;
+}
 @end
 
 @implementation SettingsViewController
 
 -(instancetype)init{
 	if (self = [super initWithStyle:UITableViewStyleInsetGrouped]) {
-		self.navigationItem.title = @"Settings";
+		
+		sections = @[
+			@[
+				[KHSettingRow rowWithTitle:@"Font Size"],
+				[KHSettingRow rowWithTitle:@"Font"]
+			],
+			@[
+				[KHSettingRowBool rowWithTitle:@"Live Word Count" state:YES],
+				[KHSettingRowBool rowWithTitle:@"Spell Checking" state:YES],
+				[KHSettingRowBool rowWithTitle:@"Auto Correction" state:YES],
+				[KHSettingRowBool rowWithTitle:@"Auto-Capitalization" state:YES]
+			],
+			@[
+				[KHSettingRow rowWithTitle:@"Tip Jar"],
+				[KHSettingRow rowWithTitle:@"$1.99"]
+			]
+		];
+		self.navigationItem.title = @"About Rewritor";
+		
+//		[UIColor colorWithRed: 0.0/255.0 green: 129.0/255.0 blue: 192.0/255.0 alpha: 1.0]
 	}
 	return self;
 }
@@ -31,21 +52,47 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-	return 1;
+	return sections.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	return 10;
+	return sections[section].count;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+	return section == 0 ? @"Editor Settings" : nil;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	static NSString *cellIdentifier = @"settingsCellIdentifier";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", (NSInteger)indexPath.row];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
+	KHSettingRow *row = sections[indexPath.section][indexPath.row];
+	
+	cell.textLabel.text = row.title;
+	
+	if ([row isKindOfClass:[KHSettingRowBool class]]) {
+		cell.accessoryView = [[UISwitch alloc] init];
+	}
+	else {
+		cell.accessoryView = nil;
+	}
+	
+	if (indexPath.section == 0 && indexPath.row == 0) {
+		UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Auto", @"Fixed"]];
+		segmentControl.selectedSegmentIndex = 0;
+		cell.accessoryView = segmentControl;
+	}
+	else if (indexPath.section == 0 && indexPath.row == 1) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.detailTextLabel.text = @"System";
+		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+	}
 	
     return cell;
 }
