@@ -16,8 +16,8 @@
 @implementation SettingsViewController
 
 -(instancetype)init{
-	if (self = [super initWithStyle:UITableViewStyleInsetGrouped]) {
-		
+	if (self = [super initWithStyle:UITableViewStyleInsetGrouped])
+	{
 		sections = @[
 			@[
 				[KHSettingRow rowWithTitle:@"Font Size"],
@@ -48,7 +48,7 @@
 }
 
 -(void)updateColors{
-	self.view.backgroundColor = [UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
+	self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];//[UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -11,6 +11,27 @@
 
 @end
 
+/*
+ Blog post ideas:
+ 
+ UIScene lifecycle UIDocument based app template
+ 
+ Basics of subclassing UIDocument
+ 
+ UIDocumentBrowserViewController based app programtically (without Main.storyboard)
+ 
+ How to add a settings button to UIDocumentBrowserViewController
+ 
+ UITextView keyboard avoidance and auto scroll
+ 
+ UITableView Settings Screen
+ 
+ Customize SwiftUI previews (light dark, device type, name)
+ 
+ */
+
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

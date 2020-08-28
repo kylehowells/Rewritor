@@ -8,7 +8,6 @@
 #import "KHSettingRow.h"
 
 @implementation KHSettingRow
-
 +(instancetype)rowWithTitle:(NSString*)title{
 	return [[self alloc] initWithTitle:title];
 }
@@ -19,8 +18,8 @@
 	}
 	return self;
 }
-
 @end
+
 
 @implementation KHSettingRowBool
 +(instancetype)rowWithTitle:(NSString*)title state:(BOOL)state{
