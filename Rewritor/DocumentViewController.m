@@ -6,8 +6,10 @@
 //
 
 #import "DocumentViewController.h"
+#import "KHSettingsController.h"
+#import "SettingsViewController.h"
 
-@interface DocumentViewController() <UITextViewDelegate>
+@interface DocumentViewController() <UITextViewDelegate, KHSettingsObserver>
 @property (nonatomic, readonly) UIBarButtonItem *saveBarButtonItem;
 @end
 
@@ -28,18 +30,35 @@
 	
 	_saveBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(savePressed)];
 	self.navigationItem.rightBarButtonItems = @[
-		_saveBarButtonItem
+		_saveBarButtonItem,
+		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)]
 	];
 	
 	_saveBarButtonItem.enabled = NO;
 	self.view.textView.delegate = self;
 	
 	[self registerForKeyboardNotifications];
+	
+	
+	[[KHSettingsController sharedInstance] addObserver:self];
 }
 
--(void)showPreviewData {
-	self.navigationItem.title = @"Preview.txt";
-	self.view.textView.text = @"Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They're not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can't do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do.";
+-(void)settingsControllerDidUpdate:(KHSettingsController*)controller{
+	
+	self.view.textView.spellCheckingType = controller.spellChecking ? UITextSpellCheckingTypeYes : UITextSpellCheckingTypeNo;
+	self.view.textView.autocorrectionType = controller.autoCorrection ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
+	self.view.textView.autocapitalizationType = controller.autoCapitalization ? UITextAutocapitalizationTypeSentences : UITextAutocapitalizationTypeNone;
+	
+	//@property (nonatomic, assign) BOOL showWordCount;
+	
+	/*
+	 UITextAutocapitalizationType autocapitalizationType;    	UITextAutocapitalizationTypeSentences
+	 UITextAutocorrectionType autocorrectionType;       		UITextAutocorrectionTypeDefault
+	 UITextSpellCheckingType spellCheckingType					UITextSpellCheckingTypeDefault;
+	 UITextSmartQuotesType smartQuotesType 						UITextSmartQuotesTypeDefault;
+	 UITextSmartDashesType smartDashesType 						UITextSmartDashesTypeDefault;
+	 UITextSmartInsertDeleteType smartInsertDeleteType 			UITextSmartInsertDeleteTypeDefault;
+	 */
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
@@ -104,6 +123,8 @@
 	UIDocumentState documentState = self.document.documentState;
 	self.view.textView.editable = ((documentState & UIDocumentStateEditingDisabled) != UIDocumentStateEditingDisabled);
 	
+	NSLog(@"%@", self.view.textView.selectedTextRange);
+	
 	if (documentState & UIDocumentStateInConflict) {
 		NSURL *documentURL = self.document.fileURL;
 		NSArray *conflictVersions = [NSFileVersion unresolvedConflictVersionsOfItemAtURL:documentURL];
@@ -112,7 +133,7 @@
 		}
 		[NSFileVersion removeOtherVersionsOfItemAtURL:documentURL error:nil];
 	}
-	else {
+	else if (!self.document.hasChangedToSave && !self.view.textView.isFirstResponder) {
 		self.view.textView.text = self.document.text;
 	}
 	
@@ -128,42 +149,48 @@
 
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
+- (void)keyboardWillShow:(NSNotification*)aNotification{
 	NSDictionary* info = [aNotification userInfo];
+	NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	UIViewAnimationCurve animationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+	
 	CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	CGSize kbSize = kbRect.size;
-	UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
 	
-	self.view.textView.contentInset = contentInsets;
-	self.view.textView.scrollIndicatorInsets = contentInsets;
-	
-	// If active text field is hidden by keyboard, scroll it so it's visible
-	// Your application might not need or want this behavior.
-	
-	// Get current selection
-	UITextPosition *startPos = self.view.textView.selectedTextRange.start;
-	// Get the position in the textview for the caret
-	CGRect caretRect = [self.view.textView caretRectForPosition:startPos];
-	// Get the position on screen
-	CGRect screenCaretRect = [self.view.textView convertRect:caretRect toCoordinateSpace:self.view.window.screen.coordinateSpace];
-	
-	// If the keyboard's area overlaps the caret, more the scroll view to see the caret.
-	if (CGRectIntersectsRect(screenCaretRect, kbRect)) {
-		[self.view.textView scrollRangeToVisible:[self.view.textView selectedRange]];
-	}
+	[UIView animateWithDuration:duration delay:0 options:((UIViewAnimationOptions)animationCurve << 16) animations:^{
+		self.view.bottomPadding = MAX(0, kbSize.height);
+	} completion:nil];
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification{
-	UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-	self.view.textView.contentInset = contentInsets;
-	self.view.textView.scrollIndicatorInsets = contentInsets;
+	NSDictionary* info = [aNotification userInfo];
+	NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	UIViewAnimationCurve animationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+	
+	[UIView animateWithDuration:duration delay:0 options:((UIViewAnimationOptions)animationCurve << 16) animations:^{
+		self.view.bottomPadding = 0;
+	} completion:nil];
+}
+
+#pragma mark - Keyboard Shortcuts
+
+- (NSArray<UIKeyCommand *>*)keyCommands {
+    return @[
+		[UIKeyCommand keyCommandWithInput:@"," modifierFlags:UIKeyModifierCommand action:@selector(showSettings)]
+    ];
+}
+
+-(void)showSettings{
+	UINavigationController *navController = [[UINavigationController alloc] init];
+	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+	[navController pushViewController:settingsVC animated:NO];
+	[self presentViewController:navController animated:YES completion:nil];
 }
 
 @end

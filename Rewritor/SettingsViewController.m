@@ -7,6 +7,7 @@
 
 #import "SettingsViewController.h"
 #import "KHSettingRow.h"
+#import "KHSettingsController.h"
 
 @interface SettingsViewController (){
 	NSArray <NSArray<KHSettingRow*>*>* sections;
@@ -18,23 +19,32 @@
 -(instancetype)init{
 	if (self = [super initWithStyle:UITableViewStyleInsetGrouped])
 	{
+		self.navigationItem.title = @"About Rewritor";
+		
 		sections = @[
+//			@[
+//				[KHSettingRow rowWithTitle:@"Font Size"],
+//				[KHSettingRow rowWithTitle:@"Font"]
+//			],
 			@[
-				[KHSettingRow rowWithTitle:@"Font Size"],
-				[KHSettingRow rowWithTitle:@"Font"]
-			],
-			@[
-				[KHSettingRowBool rowWithTitle:@"Live Word Count" state:YES],
-				[KHSettingRowBool rowWithTitle:@"Spell Checking" state:YES],
-				[KHSettingRowBool rowWithTitle:@"Auto Correction" state:YES],
-				[KHSettingRowBool rowWithTitle:@"Auto-Capitalization" state:YES]
+				[KHSettingRowBool rowWithTitle:@"Spell Checking" state:[KHSettingsController sharedInstance].spellChecking stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].spellChecking = newState;
+				}],
+				[KHSettingRowBool rowWithTitle:@"Auto Correction" state:[KHSettingsController sharedInstance].autoCorrection stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].autoCorrection = newState;
+				}],
+				[KHSettingRowBool rowWithTitle:@"Auto-Capitalization" state:[KHSettingsController sharedInstance].autoCapitalization stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].autoCapitalization = newState;
+				}],
+				[KHSettingRowBool rowWithTitle:@"Show Live Word Count" state:[KHSettingsController sharedInstance].showWordCount stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].showWordCount = newState;
+				}]
 			],
 			@[
 				[KHSettingRow rowWithTitle:@"Tip Jar"],
 				[KHSettingRow rowWithTitle:@"$1.99"]
 			]
 		];
-		self.navigationItem.title = @"About Rewritor";
 		
 //		[UIColor colorWithRed: 0.0/255.0 green: 129.0/255.0 blue: 192.0/255.0 alpha: 1.0]
 	}
@@ -48,7 +58,7 @@
 }
 
 -(void)updateColors{
-	self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];//[UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
+	self.view.backgroundColor = [UIColor systemGroupedBackgroundColor]; //[UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -76,23 +86,31 @@
 	
 	cell.textLabel.text = row.title;
 	
-	if ([row isKindOfClass:[KHSettingRowBool class]]) {
-		cell.accessoryView = [[UISwitch alloc] init];
+	if ([row isKindOfClass:[KHSettingRowBool class]])
+	{
+		KHSettingRowBool *boolRow = (KHSettingRowBool*)row;
+		
+		UISwitch *switchView = [[UISwitch alloc] init];
+		switchView.on = boolRow.state;
+		[boolRow setupSwitch:switchView];
+		
+		cell.accessoryView = switchView;
 	}
 	else {
 		cell.accessoryView = nil;
 	}
 	
-	if (indexPath.section == 0 && indexPath.row == 0) {
-		UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Auto", @"Fixed"]];
-		segmentControl.selectedSegmentIndex = 0;
-		cell.accessoryView = segmentControl;
-	}
-	else if (indexPath.section == 0 && indexPath.row == 1) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.detailTextLabel.text = @"System";
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-	}
+//	if (indexPath.section == 0 && indexPath.row == 0) {
+//		UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Auto", @"Fixed"]];
+//		segmentControl.selectedSegmentIndex = 0;
+//		cell.accessoryView = segmentControl;
+//	}
+//	else if (indexPath.section == 0 && indexPath.row == 1) {
+//		cell.accessoryView = nil;
+//		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//		cell.detailTextLabel.text = @"System";
+//		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//	}
 	
     return cell;
 }

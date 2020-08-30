@@ -10,10 +10,7 @@
 #import "Document.h"
 
 @interface DocumentViewController : UIViewController
-
 @property(null_resettable, nonatomic,strong) DocumentEditingView *view;
+
 @property (nonatomic, strong) Document *document;
-
--(void)showPreviewData;
-
 @end

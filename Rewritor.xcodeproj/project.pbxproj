@@ -19,6 +19,8 @@
 		CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */; };
 		CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */; };
 		CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DA24F73AB50002CFCA /* SettingsViewController.m */; };
+		CC76ED9524FBFD64002F4307 /* KHSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC76ED9424FBFD64002F4307 /* KHSettingsController.m */; };
+		CC76ED9824FBFF1C002F4307 /* NSPointerArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */; };
 		CCFA7FC224F8884A00BE0BBC /* KHSettingRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,10 @@
 		CC4C19D524F6DC620042C535 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
 		CC5285D924F73AB50002CFCA /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		CC5285DA24F73AB50002CFCA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		CC76ED9324FBFD64002F4307 /* KHSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingsController.h; sourceTree = "<group>"; };
+		CC76ED9424FBFD64002F4307 /* KHSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingsController.m; sourceTree = "<group>"; };
+		CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+Helpers.m"; sourceTree = "<group>"; };
+		CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+Helpers.h"; sourceTree = "<group>"; };
 		CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingRow.h; sourceTree = "<group>"; };
 		CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingRow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,8 @@
 				CC5285DA24F73AB50002CFCA /* SettingsViewController.m */,
 				CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */,
 				CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */,
+				CC76ED9324FBFD64002F4307 /* KHSettingsController.h */,
+				CC76ED9424FBFD64002F4307 /* KHSettingsController.m */,
 				CC4C19B724F6C3700042C535 /* Assets.xcassets */,
 				CC4C19B924F6C3700042C535 /* LaunchScreen.storyboard */,
 				CC4C19BC24F6C3700042C535 /* Info.plist */,
@@ -104,6 +112,8 @@
 				CC4C19CA24F6C5E80042C535 /* Untitled.txt */,
 				CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */,
 				CC4C19CF24F6CA600042C535 /* Rewritor-Bridging-Header.h */,
+				CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */,
+				CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */,
 			);
 			path = Rewritor;
 			sourceTree = "<group>";
@@ -180,9 +190,11 @@
 			files = (
 				CC4C19D424F6D4A60042C535 /* DocumentEditingView.m in Sources */,
 				CC4C19CC24F6C5E80042C535 /* DocumentViewController.m in Sources */,
+				CC76ED9824FBFF1C002F4307 /* NSPointerArray+Helpers.m in Sources */,
 				CC4C19C624F6C5BD0042C535 /* DocumentBrowserViewController.m in Sources */,
 				CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */,
 				CCFA7FC224F8884A00BE0BBC /* KHSettingRow.m in Sources */,
+				CC76ED9524FBFD64002F4307 /* KHSettingsController.m in Sources */,
 				CC4C19D124F6CA600042C535 /* SwiftUIPreviewView.swift in Sources */,
 				CC4C19CE24F6C5E80042C535 /* Document.m in Sources */,
 				CC4C19AD24F6C36E0042C535 /* AppDelegate.m in Sources */,

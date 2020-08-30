@@ -9,4 +9,5 @@
 
 @interface DocumentEditingView : UIView
 @property (nonatomic, readonly) UITextView *textView;
+@property (nonatomic, assign) CGFloat bottomPadding;
 @end
