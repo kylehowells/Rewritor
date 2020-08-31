@@ -23,12 +23,15 @@
 		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(closePressed:)];
 		
 		sections = @[
+//			@[
+//				[KHSettingRow rowWithTitle:@"Theme"]
+//			],
 			@[
-				[KHSettingRowNumber rowWithTitle:@"Font Size"],
-				[KHSettingRow rowWithTitle:@"Font"]
+				[KHSettingRowNumber rowWithTitle:@"Font Size" state:[KHSettingsController sharedInstance].fontSize stateChange:^(NSInteger newState) {
+					[KHSettingsController sharedInstance].fontSize = newState;
+				}]
 			],
 			@[
-				
 				[KHSettingRowBool rowWithTitle:@"Show Live Word Count" state:[KHSettingsController sharedInstance].showWordCount stateChange:^(BOOL newState) {
 					[KHSettingsController sharedInstance].showWordCount = newState;
 				}],
@@ -76,7 +79,26 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return section == 0 ? @"Editor Settings" : nil;
+	NSInteger offset = 1;
+	
+	switch (section + offset) {
+		case 0:
+			return @"Theme";
+			break;
+			
+		case 1:
+			return @"Font";
+			break;
+
+		case 2:
+			return @"Editor";
+			break;
+			
+		default:
+			break;
+	}
+	
+	return nil;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -102,8 +124,19 @@
 		
 		cell.accessoryView = switchView;
 	}
-	else {
-		cell.accessoryView = nil;
+	else if ([row isKindOfClass:[KHSettingRowNumber class]])
+	{
+		KHSettingRowNumber *numberRow = (KHSettingRowNumber*)row;
+		
+		UIStepper *stepper = [[UIStepper alloc] init];
+		stepper.minimumValue = 8;
+		stepper.maximumValue = 30;
+		stepper.value = numberRow.state;
+		[numberRow setupStepper:stepper cell:cell];
+		
+		cell.accessoryView = stepper;
+	}
+	else  {
 	}
 	
     return cell;

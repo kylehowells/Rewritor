@@ -23,6 +23,7 @@
 -(void)removeObserver:(id <KHSettingsObserver>)observer;
 
 // Settings
+@property (nonatomic, assign) double fontSize;
 @property (nonatomic, assign) BOOL smartInsert;
 @property (nonatomic, assign) BOOL autoCorrection;
 @property (nonatomic, assign) BOOL autoCapitalization;

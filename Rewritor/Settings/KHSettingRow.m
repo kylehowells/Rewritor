@@ -45,7 +45,7 @@
 }
 
 -(void)setupSwitch:(UISwitch*)uiSwitch{
-	[uiSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventTouchUpInside];
+	[uiSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
 }
 -(void)switchChanged:(UISwitch*)uiSwitch{
 	self.state = uiSwitch.on;
@@ -55,7 +55,9 @@
 
 
 
-@implementation KHSettingRowNumber
+@implementation KHSettingRowNumber{
+	__weak UITableViewCell *_cell;
+}
 
 +(instancetype)rowWithTitle:(NSString*)title state:(NSInteger)state stateChange:(NumberStateChanged)stateChanged{
 	return [[KHSettingRowNumber alloc] initWithTitle:title state:state stateChange:stateChanged];
@@ -72,9 +74,21 @@
 -(void)setState:(NSInteger)state{
 	_state = state;
 	
+	_cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)self.state];
+	
 	if (self.stateChanged) {
 		self.stateChanged(_state);
 	}
+}
+
+-(void)setupStepper:(UIStepper*)stepper cell:(UITableViewCell*)cell{
+	_cell = cell;
+	_cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)self.state];
+	
+	[stepper addTarget:self action:@selector(stepperChanged:) forControlEvents:UIControlEventValueChanged];
+}
+-(void)stepperChanged:(UIStepper*)stepper{
+	self.state = stepper.value;
 }
 
 @end

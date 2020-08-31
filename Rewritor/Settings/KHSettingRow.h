@@ -41,5 +41,7 @@ typedef void (^NumberStateChanged)(NSInteger);
 
 @property (nonatomic, assign) NSInteger state;
 @property (nonatomic, copy) NumberStateChanged stateChanged;
+
+-(void)setupStepper:(UIStepper*)stepper cell:(UITableViewCell*)cell;
 @end
 
