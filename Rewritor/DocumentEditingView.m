@@ -87,7 +87,7 @@
 	if (wordsCount == 1) {
 		word = @"Word";
 	}
-	_wordCountLabel.text = [NSString stringWithFormat:@"%ld Words", wordsCount];
+	_wordCountLabel.text = [NSString stringWithFormat:@"%ld %@", wordsCount, word];
 	[self setNeedsLayout];
 }
 
