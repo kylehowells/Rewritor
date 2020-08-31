@@ -39,7 +39,9 @@
 	
 	[self registerForKeyboardNotifications];
 	
-	
+	// Update settings
+	[self settingsControllerDidUpdate:[KHSettingsController sharedInstance]];
+	// Listen for settings changes
 	[[KHSettingsController sharedInstance] addObserver:self];
 }
 
@@ -48,6 +50,8 @@
 	self.view.textView.spellCheckingType = controller.spellChecking ? UITextSpellCheckingTypeYes : UITextSpellCheckingTypeNo;
 	self.view.textView.autocorrectionType = controller.autoCorrection ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
 	self.view.textView.autocapitalizationType = controller.autoCapitalization ? UITextAutocapitalizationTypeSentences : UITextAutocapitalizationTypeNone;
+	
+	self.view.showsCount = controller.showWordCount;
 	
 	//@property (nonatomic, assign) BOOL showWordCount;
 	
@@ -79,6 +83,7 @@
             // Display the content of the document, e.g.:
 			self.navigationItem.title = self.document.fileURL.lastPathComponent;
 			self.view.textView.text = ((Document*)self.document).text;
+			[self.view updateWordCount];
         } else {
             // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
         }
@@ -118,10 +123,11 @@
 	[self checkSaveState];
 }
 
+// TODO: Sort out this method, it's a mess and a source of bugs
 -(void)documentDidChange{
 	NSLog(@"documentDidChange %ld", self.document.documentState);
 	UIDocumentState documentState = self.document.documentState;
-	self.view.textView.editable = ((documentState & UIDocumentStateEditingDisabled) != UIDocumentStateEditingDisabled);
+//	_saveBarButtonItem.enabled = ((documentState & UIDocumentStateEditingDisabled) != UIDocumentStateEditingDisabled);
 	
 	NSLog(@"%@", self.view.textView.selectedTextRange);
 	
@@ -135,6 +141,7 @@
 	}
 	else if (!self.document.hasChangedToSave && !self.view.textView.isFirstResponder) {
 		self.view.textView.text = self.document.text;
+		[self.view updateWordCount];
 	}
 	
 	[self checkSaveState];
@@ -164,6 +171,7 @@
 	
 	[UIView animateWithDuration:duration delay:0 options:((UIViewAnimationOptions)animationCurve << 16) animations:^{
 		self.view.bottomPadding = MAX(0, kbSize.height);
+		[self.view layoutIfNeeded];
 	} completion:nil];
 }
 
@@ -175,6 +183,7 @@
 	
 	[UIView animateWithDuration:duration delay:0 options:((UIViewAnimationOptions)animationCurve << 16) animations:^{
 		self.view.bottomPadding = 0;
+		[self.view layoutIfNeeded];
 	} completion:nil];
 }
 

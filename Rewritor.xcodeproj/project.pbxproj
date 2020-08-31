@@ -105,6 +105,8 @@
 				CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */,
 				CC76ED9324FBFD64002F4307 /* KHSettingsController.h */,
 				CC76ED9424FBFD64002F4307 /* KHSettingsController.m */,
+				CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */,
+				CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */,
 				CC4C19B724F6C3700042C535 /* Assets.xcassets */,
 				CC4C19B924F6C3700042C535 /* LaunchScreen.storyboard */,
 				CC4C19BC24F6C3700042C535 /* Info.plist */,
@@ -112,8 +114,6 @@
 				CC4C19CA24F6C5E80042C535 /* Untitled.txt */,
 				CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */,
 				CC4C19CF24F6CA600042C535 /* Rewritor-Bridging-Header.h */,
-				CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */,
-				CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */,
 			);
 			path = Rewritor;
 			sourceTree = "<group>";
