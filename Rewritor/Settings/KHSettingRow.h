@@ -45,3 +45,16 @@ typedef void (^NumberStateChanged)(NSInteger);
 -(void)setupStepper:(UIStepper*)stepper cell:(UITableViewCell*)cell;
 @end
 
+
+//typedef void (^ThemeStateChanged)(BOOL);
+////StateChanged blockName = ^returnType(BOOL) {...};
+//
+//@interface KHSettingRowTheme : KHSettingRow
+//+(instancetype)rowWithTitle:(NSString*)title state:(BOOL)state stateChange:(ThemeStateChanged)stateChanged;
+//-(instancetype)initWithTitle:(NSString*)title state:(BOOL)state stateChange:(ThemeStateChanged)stateChanged;
+//
+//@property (nonatomic, assign) BOOL state;
+//@property (nonatomic, copy) ThemeStateChanged stateChanged;
+//
+//-(void)setupSwitch:(UISwitch*)uiSwitch;
+//@end

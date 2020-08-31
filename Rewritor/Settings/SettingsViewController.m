@@ -136,7 +136,23 @@
 		
 		cell.accessoryView = stepper;
 	}
-	else  {
+	else  { // KHSettingRowTheme
+		cell.textLabel.text = nil;
+		UISegmentedControl *segCon = [[UISegmentedControl alloc] initWithItems:@[@"Normal", @"Terminal"]];
+		segCon.selectedSegmentIndex = 0;
+		[segCon sizeToFit];
+		
+		CGRect cellFrame = cell.contentView.frame;
+		segCon.frame = ({
+			CGRect frame = segCon.frame;
+			frame.origin.x = 8;
+			frame.size.width = cellFrame.size.width - (frame.origin.x * 2);
+			frame.origin.y = (cellFrame.size.height - segCon.frame.size.height) * 0.5;
+			frame;
+		});
+		segCon.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
+		
+		[cell.contentView addSubview:segCon];
 	}
 	
     return cell;
