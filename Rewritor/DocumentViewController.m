@@ -26,12 +26,17 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(donePressed:)];
+//	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
+
+	self.navigationItem.leftBarButtonItems = @[
+		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)],
+		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)]
+	];
 	
 	_saveBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(savePressed)];
+	
 	self.navigationItem.rightBarButtonItems = @[
-		_saveBarButtonItem,
-		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)]
+		_saveBarButtonItem
 	];
 	
 	_saveBarButtonItem.enabled = NO;
@@ -107,7 +112,9 @@
 		}]];
 		
 		[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-
+		
+		alertController.popoverPresentationController.barButtonItem = sender;
+		
 		[self presentViewController:alertController animated:YES completion:nil];
 	}
 	else {
@@ -156,9 +163,9 @@
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
+
 
 - (void)keyboardWillShow:(NSNotification*)aNotification{
 	NSDictionary* info = [aNotification userInfo];
