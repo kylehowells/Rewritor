@@ -17,10 +17,8 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-	self = [super initWithFrame:frame];
-	if (self) {
+-(instancetype)initWithFrame:(CGRect)frame{
+	if (self = [super initWithFrame:frame]) {
 		counterHeight = 0;
 		
 		_textView = [[UITextView alloc] init];
@@ -39,18 +37,37 @@
 		_wordCountView.layer.cornerRadius = 12;
 		_wordCountView.layer.borderColor = [UIColor whiteColor].CGColor;//[UIColor colorWithRed: 0.0/255.0 green: 194.0/255.0 blue: 247.0/255.0 alpha: 1.0].CGColor;
 		_wordCountView.layer.borderWidth = 1;
-		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.15].CGColor;
+		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
 		_wordCountView.layer.shadowOffset = CGSizeMake(0, 1);
 		_wordCountView.layer.shadowOpacity = 1;
 		_wordCountView.layer.shadowRadius = 4;
 		[self addSubview:_wordCountView];
+		_wordCountView.hidden = YES;
 		
 		_wordCountLabel = [[UILabel alloc] init];
 		_wordCountLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
 		_wordCountLabel.text = @"1000 words";
 		[_wordCountView addSubview:_wordCountLabel];
+		
+		[self updateColors];
 	}
 	return self;
+}
+
+-(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection{
+	[self updateColors];
+}
+-(void)updateColors{
+	if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1];
+		_wordCountView.layer.borderColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
+		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:1 alpha:0.15].CGColor;
+	}
+	else {
+		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.975 alpha:1];
+		_wordCountView.layer.borderColor = [UIColor whiteColor].CGColor;
+		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
+	}
 }
 
 -(void)textChanged:(NSNotification*)notification{
