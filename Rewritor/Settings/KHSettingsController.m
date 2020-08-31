@@ -60,17 +60,19 @@
 
 -(void)loadSettings{
 	[userDefaults registerDefaults:@{
+		@"_smartInsert": @YES,
 		@"_autoCorrection": @YES,
 		@"_autoCapitalization": @YES,
 		@"_showWordCount": @NO
 	}];
 	
+	_smartInsert = [userDefaults boolForKey:@"_smartInsert"];
 	_autoCorrection = [userDefaults boolForKey:@"_autoCorrection"];
 	_autoCapitalization = [userDefaults boolForKey:@"_autoCapitalization"];
 	_showWordCount = [userDefaults boolForKey:@"_showWordCount"];
 }
 -(void)saveSettings{
-	[userDefaults setBool:_autoCorrection forKey:@"_autoCorrection"];
+	[userDefaults setBool:_smartInsert forKey:@"_smartInsert"];
 	[userDefaults setBool:_autoCorrection forKey:@"_autoCorrection"];
 	[userDefaults setBool:_autoCapitalization forKey:@"_autoCapitalization"];
 	[userDefaults setBool:_showWordCount forKey:@"_showWordCount"];
@@ -78,6 +80,11 @@
 
 
 // MARK: - Settings
+
+-(void)setSmartInsert:(BOOL)smartInsert{
+	_smartInsert = smartInsert;
+	[self settingsChanged];
+}
 
 -(void)setAutoCorrection:(BOOL)autoCorrection{
 	_autoCorrection = autoCorrection;

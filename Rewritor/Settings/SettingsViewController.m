@@ -20,21 +20,26 @@
 	if (self = [super initWithStyle:UITableViewStyleInsetGrouped])
 	{
 		self.navigationItem.title = @"About Rewritor";
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(closePressed:)];
 		
 		sections = @[
-//			@[
-//				[KHSettingRow rowWithTitle:@"Font Size"],
-//				[KHSettingRow rowWithTitle:@"Font"]
-//			],
 			@[
+				[KHSettingRowNumber rowWithTitle:@"Font Size"],
+				[KHSettingRow rowWithTitle:@"Font"]
+			],
+			@[
+				
+				[KHSettingRowBool rowWithTitle:@"Show Live Word Count" state:[KHSettingsController sharedInstance].showWordCount stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].showWordCount = newState;
+				}],
 				[KHSettingRowBool rowWithTitle:@"Auto Correction" state:[KHSettingsController sharedInstance].autoCorrection stateChange:^(BOOL newState) {
 					[KHSettingsController sharedInstance].autoCorrection = newState;
 				}],
 				[KHSettingRowBool rowWithTitle:@"Auto-Capitalization" state:[KHSettingsController sharedInstance].autoCapitalization stateChange:^(BOOL newState) {
 					[KHSettingsController sharedInstance].autoCapitalization = newState;
 				}],
-				[KHSettingRowBool rowWithTitle:@"Show Live Word Count" state:[KHSettingsController sharedInstance].showWordCount stateChange:^(BOOL newState) {
-					[KHSettingsController sharedInstance].showWordCount = newState;
+				[KHSettingRowBool rowWithTitle:@"Smart Quotes and Dashes" state:[KHSettingsController sharedInstance].smartInsert stateChange:^(BOOL newState) {
+					[KHSettingsController sharedInstance].smartInsert = newState;
 				}]
 			],
 //			@[
@@ -56,6 +61,10 @@
 
 -(void)updateColors{
 	self.view.backgroundColor = [UIColor systemGroupedBackgroundColor]; //[UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
+}
+
+-(void)closePressed:(id)sender{
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -99,12 +99,7 @@
 				CC4C19C924F6C5E80042C535 /* DocumentViewController.m */,
 				CC4C19D224F6D4A60042C535 /* DocumentEditingView.h */,
 				CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */,
-				CC5285D924F73AB50002CFCA /* SettingsViewController.h */,
-				CC5285DA24F73AB50002CFCA /* SettingsViewController.m */,
-				CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */,
-				CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */,
-				CC76ED9324FBFD64002F4307 /* KHSettingsController.h */,
-				CC76ED9424FBFD64002F4307 /* KHSettingsController.m */,
+				CC76ED9924FDB3A3002F4307 /* Settings */,
 				CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */,
 				CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */,
 				CC4C19B724F6C3700042C535 /* Assets.xcassets */,
@@ -116,6 +111,19 @@
 				CC4C19CF24F6CA600042C535 /* Rewritor-Bridging-Header.h */,
 			);
 			path = Rewritor;
+			sourceTree = "<group>";
+		};
+		CC76ED9924FDB3A3002F4307 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CC5285D924F73AB50002CFCA /* SettingsViewController.h */,
+				CC5285DA24F73AB50002CFCA /* SettingsViewController.m */,
+				CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */,
+				CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */,
+				CC76ED9324FBFD64002F4307 /* KHSettingsController.h */,
+				CC76ED9424FBFD64002F4307 /* KHSettingsController.m */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +352,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xcc -Wno-nullability-completeness";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.Rewritor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -351,7 +360,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WARNING_CFLAGS = "-Wno-nullability-completeness";
+				WARNING_CFLAGS = (
+					"-Wno-nullability-completeness",
+					"-Wno-nonnull",
+				);
 			};
 			name = Debug;
 		};
@@ -370,13 +382,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-Xcc -Wno-nullability-completeness";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.Rewritor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Rewritor/Rewritor-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WARNING_CFLAGS = "-Wno-nullability-completeness";
+				WARNING_CFLAGS = (
+					"-Wno-nullability-completeness",
+					"-Wno-nonnull",
+				);
 			};
 			name = Release;
 		};
