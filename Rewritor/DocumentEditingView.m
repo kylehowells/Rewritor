@@ -22,7 +22,8 @@
 		counterHeight = 0;
 		
 		_textView = [[UITextView alloc] init];
-		_textView.font = [UIFont monospacedSystemFontOfSize:12 weight:UIFontWeightRegular];
+		_textView.font = [UIFont monospacedSystemFontOfSize:11 weight:UIFontWeightRegular];
+//		_textView.font = [UIFont fontWithName:@"Menlo" size:12];
 		_textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 		_textView.alwaysBounceVertical = YES;
 		_textView.automaticallyAdjustsScrollIndicatorInsets = NO;
@@ -59,15 +60,19 @@
 }
 -(void)updateColors{
 	if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1];
-		_wordCountView.layer.borderColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
-		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:1 alpha:0.15].CGColor;
+		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.125 alpha:1];
+		_wordCountView.layer.borderColor = [UIColor colorWithWhite:0.25 alpha:1].CGColor;
+		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.75].CGColor;
 	}
 	else {
-		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.975 alpha:1];
+		_wordCountView.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1];
 		_wordCountView.layer.borderColor = [UIColor whiteColor].CGColor;
 		_wordCountView.layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.2].CGColor;
 	}
+
+	self.textView.backgroundColor = [UIColor colorWithRed: 51.0/255.0 green: 255.0/255.0 blue: 51.0/255.0 alpha: 0.25];
+	self.textView.backgroundColor = [UIColor colorWithRed: 40.0/255.0 green: 40.0/255.0 blue: 40.0/255.0 alpha: 1.0];
+	self.textView.textColor = [UIColor colorWithRed: 51.0/255.0 green: 255.0/255.0 blue: 51.0/255.0 alpha: 1.0];
 }
 
 -(void)textChanged:(NSNotification*)notification{

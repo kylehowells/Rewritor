@@ -23,7 +23,6 @@
 -(void)removeObserver:(id <KHSettingsObserver>)observer;
 
 // Settings
-@property (nonatomic, assign) BOOL spellChecking;
 @property (nonatomic, assign) BOOL autoCorrection;
 @property (nonatomic, assign) BOOL autoCapitalization;
 @property (nonatomic, assign) BOOL showWordCount;

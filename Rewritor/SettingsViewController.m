@@ -27,9 +27,6 @@
 //				[KHSettingRow rowWithTitle:@"Font"]
 //			],
 			@[
-				[KHSettingRowBool rowWithTitle:@"Spell Checking" state:[KHSettingsController sharedInstance].spellChecking stateChange:^(BOOL newState) {
-					[KHSettingsController sharedInstance].spellChecking = newState;
-				}],
 				[KHSettingRowBool rowWithTitle:@"Auto Correction" state:[KHSettingsController sharedInstance].autoCorrection stateChange:^(BOOL newState) {
 					[KHSettingsController sharedInstance].autoCorrection = newState;
 				}],
@@ -100,19 +97,11 @@
 		cell.accessoryView = nil;
 	}
 	
-//	if (indexPath.section == 0 && indexPath.row == 0) {
-//		UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Auto", @"Fixed"]];
-//		segmentControl.selectedSegmentIndex = 0;
-//		cell.accessoryView = segmentControl;
-//	}
-//	else if (indexPath.section == 0 && indexPath.row == 1) {
-//		cell.accessoryView = nil;
-//		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//		cell.detailTextLabel.text = @"System";
-//		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-//	}
-	
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	NSLog(@"-tableView:%@ didSelectRowAtIndexPath:%@", tableView, indexPath);
 }
 
 @end

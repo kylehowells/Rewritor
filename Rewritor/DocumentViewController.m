@@ -47,7 +47,6 @@
 
 -(void)settingsControllerDidUpdate:(KHSettingsController*)controller{
 	
-	self.view.textView.spellCheckingType = controller.spellChecking ? UITextSpellCheckingTypeYes : UITextSpellCheckingTypeNo;
 	self.view.textView.autocorrectionType = controller.autoCorrection ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
 	self.view.textView.autocapitalizationType = controller.autoCapitalization ? UITextAutocapitalizationTypeSentences : UITextAutocapitalizationTypeNone;
 	

@@ -53,6 +53,13 @@ struct SwiftUIView_Previews: PreviewProvider {
 			VCDocRepresentable()
 				.edgesIgnoringSafeArea(.all)
 				.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+				.environment(\.colorScheme, .light)
+				
+
+				VCDocRepresentable()
+					.edgesIgnoringSafeArea(.all)
+					.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+				.environment(\.colorScheme, .dark)
 		
 			/*NavWrappedVCRepresentable<SettingsViewController>()
 			.edgesIgnoringSafeArea(.all)

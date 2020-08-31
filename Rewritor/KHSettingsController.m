@@ -60,19 +60,16 @@
 
 -(void)loadSettings{
 	[userDefaults registerDefaults:@{
-		@"_spellChecking": @YES,
 		@"_autoCorrection": @YES,
 		@"_autoCapitalization": @YES,
 		@"_showWordCount": @NO
 	}];
 	
-	_spellChecking = [userDefaults boolForKey:@"_spellChecking"];
 	_autoCorrection = [userDefaults boolForKey:@"_autoCorrection"];
 	_autoCapitalization = [userDefaults boolForKey:@"_autoCapitalization"];
 	_showWordCount = [userDefaults boolForKey:@"_showWordCount"];
 }
 -(void)saveSettings{
-	[userDefaults setBool:_spellChecking forKey:@"_spellChecking"];
 	[userDefaults setBool:_autoCorrection forKey:@"_autoCorrection"];
 	[userDefaults setBool:_autoCorrection forKey:@"_autoCorrection"];
 	[userDefaults setBool:_autoCapitalization forKey:@"_autoCapitalization"];
@@ -81,11 +78,6 @@
 
 
 // MARK: - Settings
-
--(void)setSpellChecking:(BOOL)spellChecking{
-	_spellChecking = spellChecking;
-	[self settingsChanged];
-}
 
 -(void)setAutoCorrection:(BOOL)autoCorrection{
 	_autoCorrection = autoCorrection;
