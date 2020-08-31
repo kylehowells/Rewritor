@@ -50,11 +50,11 @@ struct NavWrappedVCRepresentable<VCClass:UIViewController>: UIViewControllerRepr
 struct SwiftUIView_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			/*VCDocRepresentable()
+			VCDocRepresentable()
 				.edgesIgnoringSafeArea(.all)
-				.previewDevice(PreviewDevice(rawValue: "iPhone 8"))*/
+				.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
 		
-			NavWrappedVCRepresentable<SettingsViewController>()
+			/*NavWrappedVCRepresentable<SettingsViewController>()
 			.edgesIgnoringSafeArea(.all)
 			.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
 			.environment(\.colorScheme, .light)
@@ -62,7 +62,7 @@ struct SwiftUIView_Previews: PreviewProvider {
 			NavWrappedVCRepresentable<SettingsViewController>()
 			.edgesIgnoringSafeArea(.all)
 			.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-			.environment(\.colorScheme, .dark)
+			.environment(\.colorScheme, .dark)*/
 		}
 	}
 }
