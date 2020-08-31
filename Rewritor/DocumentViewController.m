@@ -11,6 +11,7 @@
 
 @interface DocumentViewController() <UITextViewDelegate, KHSettingsObserver>
 @property (nonatomic, readonly) UIBarButtonItem *saveBarButtonItem;
+@property (nonatomic, readonly) UIBarButtonItem *settingsBarButtonItem;
 @end
 
 @implementation DocumentViewController
@@ -26,14 +27,14 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	
-//	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
-
-	self.navigationItem.leftBarButtonItems = @[
-		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)],
-		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)]
-	];
+	_settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
 	
 	_saveBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(savePressed)];
+	
+	self.navigationItem.leftBarButtonItems = @[
+		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)],
+		_settingsBarButtonItem
+	];
 	
 	self.navigationItem.rightBarButtonItems = @[
 		_saveBarButtonItem
@@ -51,6 +52,10 @@
 }
 
 -(void)settingsControllerDidUpdate:(KHSettingsController*)controller{
+	
+	if (self.view.textView.font.pointSize != controller.fontSize) {
+		self.view.textView.font = [self.view.textView.font fontWithSize:controller.fontSize];
+	}
 	
 	self.view.textView.autocorrectionType = controller.autoCorrection ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
 	self.view.textView.autocapitalizationType = controller.autoCapitalization ? UITextAutocapitalizationTypeSentences : UITextAutocapitalizationTypeNone;
@@ -205,6 +210,10 @@
 	UINavigationController *navController = [[UINavigationController alloc] init];
 	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
 	[navController pushViewController:settingsVC animated:NO];
+	
+	navController.modalPresentationStyle = UIModalPresentationPopover;
+	navController.popoverPresentationController.barButtonItem = _settingsBarButtonItem;
+	
 	[self presentViewController:navController animated:YES completion:nil];
 }
 
