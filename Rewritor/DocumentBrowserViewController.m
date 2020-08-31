@@ -75,11 +75,9 @@
 - (void)presentDocumentAtURL:(NSURL *)documentURL {
 	NSLog(@"-presentDocumentAtURL: %@", documentURL);
 	UINavigationController *navController = [[UINavigationController alloc] init];
-	navController.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
 	
 	DocumentViewController *documentViewController = [[DocumentViewController alloc] init];
 	documentViewController.document = [[Document alloc] initWithFileURL:documentURL];
-	navController.navigationBar.tintColor = [UIColor greenColor];
 	
 	[navController pushViewController:documentViewController animated:NO];
 	navController.modalPresentationStyle = UIModalPresentationFullScreen;
