@@ -83,5 +83,9 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.com.ikyle.Rewritor.file_open</string>
+	</array>
 </dict>
 </plist>

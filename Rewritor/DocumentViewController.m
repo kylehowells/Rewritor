@@ -22,6 +22,7 @@
 }
 
 // TODO: State restoration
+// TODO: Work out handoff with UIDocument (Pages does it?)
 // TODO: Keyboard shortcuts: save/close/text size/open settings/share
 
 -(void)viewDidLoad{
