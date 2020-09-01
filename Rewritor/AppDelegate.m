@@ -30,6 +30,8 @@
  
  State restoration, UIDocument and security scoped bookmarks
  
+ Add observer multi-delegate pattern
+ 
  */
 
 

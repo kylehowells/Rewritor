@@ -45,7 +45,6 @@
 		CC4C19D024F6CA600042C535 /* SwiftUIPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPreviewView.swift; sourceTree = "<group>"; };
 		CC4C19D224F6D4A60042C535 /* DocumentEditingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentEditingView.h; sourceTree = "<group>"; };
 		CC4C19D324F6D4A60042C535 /* DocumentEditingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentEditingView.m; sourceTree = "<group>"; };
-		CC4C19D524F6DC620042C535 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
 		CC5285D924F73AB50002CFCA /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		CC5285DA24F73AB50002CFCA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		CC76ED9324FBFD64002F4307 /* KHSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingsController.h; sourceTree = "<group>"; };
@@ -86,7 +85,6 @@
 		CC4C19AA24F6C36E0042C535 /* Rewritor */ = {
 			isa = PBXGroup;
 			children = (
-				CC4C19D524F6DC620042C535 /* Rewritor.entitlements */,
 				CC4C19AB24F6C36E0042C535 /* AppDelegate.h */,
 				CC4C19AC24F6C36E0042C535 /* AppDelegate.m */,
 				CC4C19AE24F6C36E0042C535 /* SceneDelegate.h */,
@@ -355,7 +353,7 @@
 				OTHER_SWIFT_FLAGS = "-Xcc -Wno-nullability-completeness";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.Rewritor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Rewritor/Rewritor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -385,7 +383,7 @@
 				OTHER_SWIFT_FLAGS = "-Xcc -Wno-nullability-completeness";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.Rewritor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Rewritor/Rewritor-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
