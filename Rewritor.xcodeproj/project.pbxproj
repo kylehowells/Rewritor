@@ -51,6 +51,7 @@
 		CC76ED9424FBFD64002F4307 /* KHSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingsController.m; sourceTree = "<group>"; };
 		CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+Helpers.m"; sourceTree = "<group>"; };
 		CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+Helpers.h"; sourceTree = "<group>"; };
+		CC80EF5A24FDE13100470574 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
 		CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingRow.h; sourceTree = "<group>"; };
 		CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingRow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +86,7 @@
 		CC4C19AA24F6C36E0042C535 /* Rewritor */ = {
 			isa = PBXGroup;
 			children = (
+				CC80EF5A24FDE13100470574 /* Rewritor.entitlements */,
 				CC4C19AB24F6C36E0042C535 /* AppDelegate.h */,
 				CC4C19AC24F6C36E0042C535 /* AppDelegate.m */,
 				CC4C19AE24F6C36E0042C535 /* SceneDelegate.h */,
