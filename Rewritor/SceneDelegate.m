@@ -21,6 +21,24 @@
 	self.window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene*)scene];
 	self.window.rootViewController = self.documentBrowserViewController;
 	[self.window makeKeyAndVisible];
+	
+	NSUserActivity *userActivity = connectionOptions.userActivities.anyObject ?: scene.session.stateRestorationActivity;
+	NSData *data = userActivity.userInfo[@"kBookmarkData"];
+	if (data != nil) {
+		// Might need to look into app vs document scopes bookmarks for handoff between devices
+		NSURL *url = [NSURL URLByResolvingBookmarkData:data options:NSURLBookmarkResolutionWithoutUI relativeToURL:nil bookmarkDataIsStale:nil error:nil];
+		
+		[self.documentBrowserViewController revealDocumentAtURL:url importIfNeeded:NO completion:^(NSURL * _Nullable revealedDocumentURL, NSError * _Nullable error) {
+			if (error) {
+				// Handle the error appropriately
+				NSLog(@"Failed to reveal the document at URL %@ with error: '%@'", url, error);
+				return;
+			}
+			
+			// Present the Document View Controller for the revealed URL
+			[self.documentBrowserViewController presentDocumentAtURL:revealedDocumentURL];
+		}];
+	}
 }
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
@@ -72,6 +90,15 @@
 		// Present the Document View Controller for the revealed URL
 		[self.documentBrowserViewController presentDocumentAtURL:revealedDocumentURL];
 	}];
+}
+
+// For handoff
+//-(void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity{
+//	NSLog(@"-scene:(UIScene *)scene continueUserActivity:%@", userActivity);
+//}
+
+-(NSUserActivity *)stateRestorationActivityForScene:(UIScene *)scene{
+	return scene.userActivity;
 }
 
 @end

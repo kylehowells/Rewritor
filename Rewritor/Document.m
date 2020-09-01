@@ -7,7 +7,9 @@
 
 #import "Document.h"
 
-@implementation Document
+@implementation Document{
+	NSData *bookmarkData;
+}
 
 -(BOOL)hasChangedToSave{
 	return ![_originalText isEqualToString:self.text];
@@ -42,6 +44,14 @@
   // Register the undo operation to support auto-save
 //  [self.undoManager setActionName:@"Text Change"];
 //  [self.undoManager registerUndoWithTarget:self selector:@selector(setText:) object:oldText];
+}
+
+-(NSData*)bookmarkData{
+	if (bookmarkData == nil) {
+		bookmarkData = [self.fileURL bookmarkDataWithOptions:NSURLBookmarkCreationMinimalBookmark includingResourceValuesForKeys:nil relativeToURL:nil error:nil];
+	}
+
+	return bookmarkData;
 }
 
 @end

@@ -74,21 +74,51 @@
 	 */
 }
 
+-(NSUserActivity*)documentActivity{
+	NSData *data = self.document.bookmarkData;
+	if (data == nil) { return nil; }
+	
+	NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:@"com.ikyle.Rewritor.file_open"];
+	
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+	[dictionary setObject:self.document.fileURL.lastPathComponent forKey:@"kTitle"];
+	[dictionary setValue:data forKey:@"kBookmarkData"];
+	[dictionary addEntriesFromDictionary:userActivity.userInfo];
+	userActivity.userInfo = dictionary;
+	userActivity.requiredUserInfoKeys = [NSSet setWithObjects:@"kBookmarkData", nil];
+	
+	return userActivity;
+}
+
 - (void)textViewDidChange:(UITextView *)textView{
 	self.document.text = textView.text;
 	
 	[self checkSaveState];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	
+	self.userActivity = [self documentActivity];
+	self.view.window.windowScene.userActivity = [self userActivity];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	self.view.window.windowScene.userActivity = nil;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentDidChange) name:UIDocumentStateChangedNotification object:self.document];
 	
+//	NSLog(@"user acivity: %@", self.document.userActivity);
+	
     // Access the document
     [self.document openWithCompletionHandler:^(BOOL success) {
         if (success) {
+			NSLog(@"user acivity: %@", self.document.userActivity);
             // Display the content of the document, e.g.:
 			self.navigationItem.title = self.document.fileURL.lastPathComponent;
 			self.view.textView.text = ((Document*)self.document).text;
@@ -98,6 +128,7 @@
         }
     }];
 }
+
 -(void)checkSaveState{
 	_saveBarButtonItem.enabled = [self.document hasChangedToSave];
 }

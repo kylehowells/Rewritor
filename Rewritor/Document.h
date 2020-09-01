@@ -11,4 +11,6 @@
 @property (nonatomic, readonly) NSString *originalText;
 @property (nonatomic, copy) NSString *text;
 -(BOOL)hasChangedToSave;
+
+-(NSData*)bookmarkData;
 @end
