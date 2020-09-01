@@ -14,23 +14,22 @@
 /*
  Blog post ideas:
  
- UIScene lifecycle UIDocument based app template
+ - UIScene lifecycle UIDocument based app template
+ - UIDocumentBrowserViewController based app programtically (without Main.storyboard)
  
- Basics of subclassing UIDocument
+ - Basics of subclassing UIDocument
  
- UIDocumentBrowserViewController based app programtically (without Main.storyboard)
+ - Short: How to add a settings button to UIDocumentBrowserViewController
  
- How to add a settings button to UIDocumentBrowserViewController
+ - UITextView keyboard avoidance and auto scroll
  
- UITextView keyboard avoidance and auto scroll
+ - UITableView Inset style Settings Screen (cell.accessoryView switches and segement controls)
  
- UITableView Settings Screen
+ - Short: Customize SwiftUI previews (light dark, device type, name)
  
- Customize SwiftUI previews (light dark, device type, name)
+ - State restoration, UIDocument and security scoped bookmarks
  
- State restoration, UIDocument and security scoped bookmarks
- 
- Add observer multi-delegate pattern
+ - Short: addObserver weak array multi-delegate pattern
  
  */
 
