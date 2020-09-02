@@ -21,8 +21,20 @@
 		CC5285DB24F73AB50002CFCA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5285DA24F73AB50002CFCA /* SettingsViewController.m */; };
 		CC76ED9524FBFD64002F4307 /* KHSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC76ED9424FBFD64002F4307 /* KHSettingsController.m */; };
 		CC76ED9824FBFF1C002F4307 /* NSPointerArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */; };
+		CCF1108625003C4600FC8CBC /* RewritorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1108525003C4600FC8CBC /* RewritorUITests.swift */; };
+		CCF1108E25003CB800FC8CBC /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1108D25003CB800FC8CBC /* SnapshotHelper.swift */; };
 		CCFA7FC224F8884A00BE0BBC /* KHSettingRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCF1108825003C4600FC8CBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC4C19A024F6C36E0042C535 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC4C19A724F6C36E0042C535;
+			remoteInfo = Rewritor;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CC4C19A824F6C36E0042C535 /* Rewritor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewritor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,12 +64,23 @@
 		CC76ED9624FBFF1C002F4307 /* NSPointerArray+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+Helpers.m"; sourceTree = "<group>"; };
 		CC76ED9724FBFF1C002F4307 /* NSPointerArray+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+Helpers.h"; sourceTree = "<group>"; };
 		CC80EF5A24FDE13100470574 /* Rewritor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewritor.entitlements; sourceTree = "<group>"; };
+		CCF1108325003C4600FC8CBC /* RewritorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewritorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF1108525003C4600FC8CBC /* RewritorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewritorUITests.swift; sourceTree = "<group>"; };
+		CCF1108725003C4600FC8CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCF1108D25003CB800FC8CBC /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CCFA7FC024F8884A00BE0BBC /* KHSettingRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHSettingRow.h; sourceTree = "<group>"; };
 		CCFA7FC124F8884A00BE0BBC /* KHSettingRow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHSettingRow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CC4C19A524F6C36E0042C535 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF1108025003C4600FC8CBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4C19AA24F6C36E0042C535 /* Rewritor */,
+				CCF1108425003C4600FC8CBC /* RewritorUITests */,
 				CC4C19A924F6C36E0042C535 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4C19A824F6C36E0042C535 /* Rewritor.app */,
+				CCF1108325003C4600FC8CBC /* RewritorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +151,16 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		CCF1108425003C4600FC8CBC /* RewritorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CCF1108D25003CB800FC8CBC /* SnapshotHelper.swift */,
+				CCF1108525003C4600FC8CBC /* RewritorUITests.swift */,
+				CCF1108725003C4600FC8CBC /* Info.plist */,
+			);
+			path = RewritorUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,17 +181,40 @@
 			productReference = CC4C19A824F6C36E0042C535 /* Rewritor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CCF1108225003C4600FC8CBC /* RewritorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF1108C25003C4600FC8CBC /* Build configuration list for PBXNativeTarget "RewritorUITests" */;
+			buildPhases = (
+				CCF1107F25003C4600FC8CBC /* Sources */,
+				CCF1108025003C4600FC8CBC /* Frameworks */,
+				CCF1108125003C4600FC8CBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCF1108925003C4600FC8CBC /* PBXTargetDependency */,
+			);
+			name = RewritorUITests;
+			productName = RewritorUITests;
+			productReference = CCF1108325003C4600FC8CBC /* RewritorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CC4C19A024F6C36E0042C535 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					CC4C19A724F6C36E0042C535 = {
 						CreatedOnToolsVersion = 12.0;
 						LastSwiftMigration = 1200;
+					};
+					CCF1108225003C4600FC8CBC = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = CC4C19A724F6C36E0042C535;
 					};
 				};
 			};
@@ -174,6 +232,7 @@
 			projectRoot = "";
 			targets = (
 				CC4C19A724F6C36E0042C535 /* Rewritor */,
+				CCF1108225003C4600FC8CBC /* RewritorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +245,13 @@
 				CC4C19BB24F6C3700042C535 /* LaunchScreen.storyboard in Resources */,
 				CC4C19CD24F6C5E80042C535 /* Untitled.txt in Resources */,
 				CC4C19B824F6C3700042C535 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF1108125003C4600FC8CBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +277,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCF1107F25003C4600FC8CBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF1108625003C4600FC8CBC /* RewritorUITests.swift in Sources */,
+				CCF1108E25003CB800FC8CBC /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCF1108925003C4600FC8CBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC4C19A724F6C36E0042C535 /* Rewritor */;
+			targetProxy = CCF1108825003C4600FC8CBC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CC4C19B924F6C3700042C535 /* LaunchScreen.storyboard */ = {
@@ -396,6 +479,50 @@
 			};
 			name = Release;
 		};
+		CCF1108A25003C4600FC8CBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFTL2336WY;
+				INFOPLIST_FILE = RewritorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.RewritorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rewritor;
+			};
+			name = Debug;
+		};
+		CCF1108B25003C4600FC8CBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFTL2336WY;
+				INFOPLIST_FILE = RewritorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikyle.RewritorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rewritor;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,6 +540,15 @@
 			buildConfigurations = (
 				CC4C19C224F6C3700042C535 /* Debug */,
 				CC4C19C324F6C3700042C535 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCF1108C25003C4600FC8CBC /* Build configuration list for PBXNativeTarget "RewritorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF1108A25003C4600FC8CBC /* Debug */,
+				CCF1108B25003C4600FC8CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
