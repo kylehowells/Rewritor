@@ -36,6 +36,11 @@
 	[super saveToURL:url forSaveOperation:saveOperation completionHandler:completionHandler];
 }
 
+// Disable auto save
+-(void)autosaveWithCompletionHandler:(void (^)(BOOL))completionHandler{
+	completionHandler(NO);
+}
+
 
 -(void)setText:(NSString *)text{
 //	NSString *oldText = _text;
