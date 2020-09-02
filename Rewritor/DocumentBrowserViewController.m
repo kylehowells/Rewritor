@@ -33,6 +33,23 @@
 	];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	
+	NSLog(@"-viewDidAppear:%ld", (long)animated);
+	[self openExample];
+}
+
+-(void)openExample{
+	NSURL *fileURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Finger Painting.txt"];
+	[self presentDocumentAtURL:fileURL];
+}
+
+- (NSURL*)applicationDocumentsDirectory {
+     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+
 #pragma mark UIDocumentBrowserViewControllerDelegate
 
 - (void)documentBrowser:(UIDocumentBrowserViewController *)controller didRequestDocumentCreationWithHandler:(void (^)(NSURL * _Nullable, UIDocumentBrowserImportMode))importHandler {
