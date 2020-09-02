@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 
 @interface DocumentViewController() <UITextViewDelegate, KHSettingsObserver>
+@property (nonatomic, readonly) UIBarButtonItem *closeBarButtonItem;
 @property (nonatomic, readonly) UIBarButtonItem *saveBarButtonItem;
 @property (nonatomic, readonly) UIBarButtonItem *settingsBarButtonItem;
 @end
@@ -21,19 +22,16 @@
 	self.view = [[DocumentEditingView alloc] init];
 }
 
-// TODO: State restoration
-// TODO: Work out handoff with UIDocument (Pages does it?)
-// TODO: Keyboard shortcuts: save/close/text size/open settings/share
-
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	
+	_closeBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
 	_settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
 	
 	_saveBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(savePressed)];
 	
 	self.navigationItem.leftBarButtonItems = @[
-		[[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)],
+		_closeBarButtonItem,
 		_settingsBarButtonItem
 	];
 	
@@ -60,6 +58,8 @@
 	
 	self.view.textView.autocorrectionType = controller.autoCorrection ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo;
 	self.view.textView.autocapitalizationType = controller.autoCapitalization ? UITextAutocapitalizationTypeSentences : UITextAutocapitalizationTypeNone;
+	self.view.textView.smartDashesType = controller.smartInsert ? UITextSmartDashesTypeDefault : UITextSmartDashesTypeNo;
+	self.view.textView.smartQuotesType = controller.smartInsert ? UITextSmartQuotesTypeDefault : UITextSmartQuotesTypeNo;
 	
 	self.view.showsCount = controller.showWordCount;
 	
@@ -132,6 +132,10 @@
 
 -(void)checkSaveState{
 	_saveBarButtonItem.enabled = [self.document hasChangedToSave];
+}
+
+-(void)donePressed{
+	[self donePressed:self.closeBarButtonItem];
 }
 
 - (void)donePressed:(id)sender {
@@ -234,7 +238,9 @@
 
 - (NSArray<UIKeyCommand *>*)keyCommands {
     return @[
-		[UIKeyCommand keyCommandWithInput:@"," modifierFlags:UIKeyModifierCommand action:@selector(showSettings)]
+		[UIKeyCommand commandWithTitle:@"Open Settings" image:nil action:@selector(showSettings) input:@"," modifierFlags:UIKeyModifierCommand propertyList:nil],
+		[UIKeyCommand commandWithTitle:@"Save" image:nil action:@selector(showSettings) input:@"s" modifierFlags:UIKeyModifierCommand propertyList:nil],
+		[UIKeyCommand commandWithTitle:@"Close" image:nil action:@selector(donePressed) input:@"w" modifierFlags:UIKeyModifierCommand propertyList:nil]
     ];
 }
 
