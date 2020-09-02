@@ -62,17 +62,6 @@
 	self.view.textView.smartQuotesType = controller.smartInsert ? UITextSmartQuotesTypeDefault : UITextSmartQuotesTypeNo;
 	
 	self.view.showsCount = controller.showWordCount;
-	
-	//@property (nonatomic, assign) BOOL showWordCount;
-	
-	/*
-	 UITextAutocapitalizationType autocapitalizationType;    	UITextAutocapitalizationTypeSentences
-	 UITextAutocorrectionType autocorrectionType;       		UITextAutocorrectionTypeDefault
-	 UITextSpellCheckingType spellCheckingType					UITextSpellCheckingTypeDefault;
-	 UITextSmartQuotesType smartQuotesType 						UITextSmartQuotesTypeDefault;
-	 UITextSmartDashesType smartDashesType 						UITextSmartDashesTypeDefault;
-	 UITextSmartInsertDeleteType smartInsertDeleteType 			UITextSmartInsertDeleteTypeDefault;
-	 */
 }
 
 -(NSUserActivity*)documentActivity{
@@ -113,8 +102,6 @@
     [super viewWillAppear:animated];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentDidChange) name:UIDocumentStateChangedNotification object:self.document];
-	
-//	NSLog(@"user acivity: %@", self.document.userActivity);
 	
     // Access the document
     [self.document openWithCompletionHandler:^(BOOL success) {
@@ -170,11 +157,10 @@
 	[self checkSaveState];
 }
 
-// TODO: Sort out this method, it's a mess and a source of bugs
+// TODO: Actually understand this method
 -(void)documentDidChange{
-	NSLog(@"documentDidChange %ld", self.document.documentState);
+	NSLog(@"documentDidChange %ld - %@", self.document.documentState, self.document);
 	UIDocumentState documentState = self.document.documentState;
-//	_saveBarButtonItem.enabled = ((documentState & UIDocumentStateEditingDisabled) != UIDocumentStateEditingDisabled);
 	
 	NSLog(@"%@", self.view.textView.selectedTextRange);
 	
