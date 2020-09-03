@@ -9,6 +9,7 @@
 #import "Document.h"
 #import "DocumentViewController.h"
 #import "SettingsViewController.h"
+#import "KHSettingsController.h"
 
 @interface DocumentBrowserViewController () <UIDocumentBrowserViewControllerDelegate>
 
@@ -33,15 +34,31 @@
 	];
 }
 
+static NSInteger showCount = 0;
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
 	NSLog(@"-viewDidAppear:%ld", (long)animated);
-	[self openExample];
+	showCount++;
+	
+	if (showCount == 1) {
+		// Screenshot
+		[KHSettingsController sharedInstance].fontSize = 12;
+		[KHSettingsController sharedInstance].showWordCount = YES;
+		
+		[self openExample];
+	}
 }
 
 -(void)openExample{
 	NSURL *fileURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Finger Painting.txt"];
+	[self presentDocumentAtURL:fileURL];
+}
+-(void)openExampleTwo{
+	[KHSettingsController sharedInstance].fontSize = 12;
+	[KHSettingsController sharedInstance].showWordCount = YES;
+	
+	NSURL *fileURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Quotes.txt"];
 	[self presentDocumentAtURL:fileURL];
 }
 
@@ -104,6 +121,9 @@
 #pragma mark - Settings
 
 -(void)showSettings:(id)sender{
+	[self openExampleTwo];
+	return;
+	
 	UINavigationController *navController = [[UINavigationController alloc] init];
 	
 	SettingsViewController *settingsVC = [[SettingsViewController alloc] init];

@@ -125,7 +125,9 @@
 	[self donePressed:self.closeBarButtonItem];
 }
 
+static NSInteger closeCount = 0;
 - (void)donePressed:(id)sender {
+	closeCount++;
 	if ([self.document hasChangedToSave]) {
 		// Prompt to save/revert?
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Unsaved Changed" message:@"Do you want to save the changes you made?" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -146,7 +148,11 @@
 		[self presentViewController:alertController animated:YES completion:nil];
 	}
 	else {
-		[self dismissViewControllerAnimated:YES completion:nil];
+		[self dismissViewControllerAnimated:YES completion:^{
+			if (1 == closeCount) {
+				[[UIApplication sharedApplication] sendAction:@selector(openExampleTwo) to:nil from:nil forEvent:nil];
+			}
+		}];
 	}
 }
 -(void)savePressed{

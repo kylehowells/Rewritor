@@ -58,32 +58,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	
 	[self updateColors];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-	[super viewDidDisappear:animated];
-	
-	NSLog(@"-viewDidDisappear:%ld", (long)animated);
-	
+-(void)closePressed:(id)sender{
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)updateColors{
 	self.view.backgroundColor = [UIColor systemGroupedBackgroundColor]; //[UIColor colorWithRed: 242.0/255.0 green: 241.0/255.0 blue: 246.0/255.0 alpha: 1.0];
-}
-
-static NSInteger closeCount = 0;
-
--(void)closePressed:(id)sender{
-	closeCount++;
-	[self dismissViewControllerAnimated:YES completion:^{
-		if (closeCount == 1) {
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.125 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-				[[UIApplication sharedApplication] sendAction:@selector(openExample) to:nil from:nil forEvent:nil];
-			});
-		}
-	}];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
