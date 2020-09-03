@@ -148,11 +148,13 @@ static NSInteger closeCount = 0;
 		[self presentViewController:alertController animated:YES completion:nil];
 	}
 	else {
-		[self dismissViewControllerAnimated:YES completion:^{
-			if (1 == closeCount) {
-				[[UIApplication sharedApplication] sendAction:@selector(openExampleTwo) to:nil from:nil forEvent:nil];
-			}
-		}];
+		[self dismissViewControllerAnimated:YES completion:nil];
+		// Screenshots
+//		[self dismissViewControllerAnimated:YES completion:^{
+//			if (1 == closeCount) {
+//				[[UIApplication sharedApplication] sendAction:@selector(openExampleTwo) to:nil from:nil forEvent:nil];
+//			}
+//		}];
 	}
 }
 -(void)savePressed{

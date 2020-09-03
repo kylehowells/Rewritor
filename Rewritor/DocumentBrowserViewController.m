@@ -41,13 +41,14 @@ static NSInteger showCount = 0;
 	NSLog(@"-viewDidAppear:%ld", (long)animated);
 	showCount++;
 	
-	if (showCount == 1) {
-		// Screenshot
-		[KHSettingsController sharedInstance].fontSize = 12;
-		[KHSettingsController sharedInstance].showWordCount = YES;
-		
-		[self openExample];
-	}
+	// Screenshots
+//	if (showCount == 1) {
+//		// Screenshot
+//		[KHSettingsController sharedInstance].fontSize = 12;
+//		[KHSettingsController sharedInstance].showWordCount = YES;
+//
+//		[self openExample];
+//	}
 }
 
 -(void)openExample{
@@ -121,8 +122,9 @@ static NSInteger showCount = 0;
 #pragma mark - Settings
 
 -(void)showSettings:(id)sender{
-	[self openExampleTwo];
-	return;
+	// Screenshots
+//	[self openExampleTwo];
+//	return;
 	
 	UINavigationController *navController = [[UINavigationController alloc] init];
 	
