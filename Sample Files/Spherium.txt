@@ -1,0 +1,7 @@
+Spherium is designed to easily view and share 360 degree images saved in your Photo Library.
+
+Spherium supports viewing equirectangular 360 images, and is designed to handle images from a minimum resolution of 1000 x 2000 pixels; allowing you to view panoramas images 4k, 8k, 10k, or even 16k and above in resolution.
+
+While viewing a photo in Spherium you can share the entire 360 photo, or take snapshots of portions of the image for sharing.
+
+Spherium will automatically attempt to find the 360 equirectangular images saved in your photo library from 360 cameras, drones, other apps, the web or anywhere else you have saved them from. If Spherium incorrectly identifies an image as a 360 you can manually exclude it from appearing in Spherium.

@@ -1,0 +1,21 @@
+# Finger Painting
+An amazingly simple drawing app for toddlers designed and developed by Kyle Howells.
+
+# Description
+
+When trying to use various drawing apps with a little child I found them all too complicated. Many of them had too many controls all over the screen that the child would press accidently, and which limited the available area onscreen to draw on.
+
+Finger Painting is designed to be simple and easy for little children to use, with a big fullscreen canvas for them to draw on.
+The controls are available by pressing the color wheel button in the bottom right corner of the screen. Pressing it brings up a big simplified color wheel and size selector so children can easily find the same colors, and sizes, again and again.
+
+
+# AppStore Reviews
+
+This is Awesome!! It's the first coloring app I have found that me and my daughter can color at the same time.
+★ ★ ★ ★ ★
+
+No upsells, no buttons to accidentally tap and end up in some part of the app they can't get back from, no complicated tool selections. Just pick a color and draw.
+★ ★ ★ ★ ★
+
+A nice, simple drawing app with no confusing features or fluff. My kid can use it without me needing to step in.
+★ ★ ★ ★ ★

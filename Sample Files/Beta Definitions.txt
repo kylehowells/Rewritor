@@ -1,0 +1,6 @@
+Beta Definitions
+
+development (d): everything is in progress and the app might be completely unusable.
+alpha (a): the app is feature-complete and has no known bugs — but, importantly, it’s had very little testing.
+beta (b): the app is feature-complete, has no known bugs, and has been tested — but further testing is still warranted. Every beta is a release candidate.
+
