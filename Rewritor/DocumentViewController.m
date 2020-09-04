@@ -13,6 +13,7 @@
 @property (nonatomic, readonly) UIBarButtonItem *closeBarButtonItem;
 @property (nonatomic, readonly) UIBarButtonItem *saveBarButtonItem;
 @property (nonatomic, readonly) UIBarButtonItem *settingsBarButtonItem;
+@property (nonatomic, readonly) UIBarButtonItem *shareBarButtonItem;
 @end
 
 @implementation DocumentViewController
@@ -29,6 +30,7 @@
 	_settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"ellipsis"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
 	
 	_saveBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(savePressed)];
+	_shareBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharePressed:)];
 	
 	self.navigationItem.leftBarButtonItems = @[
 		_closeBarButtonItem,
@@ -36,7 +38,8 @@
 	];
 	
 	self.navigationItem.rightBarButtonItems = @[
-		_saveBarButtonItem
+		_saveBarButtonItem,
+		_shareBarButtonItem
 	];
 	
 	_saveBarButtonItem.enabled = NO;
@@ -157,6 +160,12 @@ static NSInteger closeCount = 0;
 //		}];
 	}
 }
+-(void)sharePressed:(id)sender{
+	UIActivityViewController *shareVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.document.text] applicationActivities:nil];
+	shareVC.popoverPresentationController.barButtonItem = _shareBarButtonItem;
+	[self presentViewController:shareVC animated:YES completion:nil];
+}
+
 -(void)savePressed{
 	[self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
 		NSLog(@"saveToURL: completionHandler: = %d", success);
