@@ -120,7 +120,7 @@
 	UIEdgeInsets safeArea = self.safeAreaInsets;
 	
 	UIEdgeInsets contentInsets = ({
-		UIEdgeInsets insets = UIEdgeInsetsZero;
+		UIEdgeInsets insets = safeArea;
 		insets.top = safeArea.top;
 		insets.bottom = MAX(safeArea.bottom, _bottomPadding) + (_showsCount ? (counterHeight + 8 + 4) : 0);
 		insets;
