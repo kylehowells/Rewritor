@@ -1,13 +1,19 @@
 # Uncomment the lines below you want to change by removing the # in the beginning
 
-# A list of devices you want to take the screenshots from
+# AppStore screenshots
+# devices([
+#   "iPhone 8",
+#   "iPhone 8 Plus",
+#   "iPhone 11 Pro",
+#   "iPhone 11 Pro Max",
+#   "iPad Pro (12.9-inch)",
+#   "iPad Pro (12.9-inch) (4th generation)"
+# ])
+
+# Website screenshots
 devices([
-  "iPhone 8",
-  "iPhone 8 Plus",
-  "iPhone 11 Pro",
-  "iPhone 11 Pro Max",
-  "iPad Pro (12.9-inch)",
-  "iPad Pro (12.9-inch) (4th generation)"
+  "iPhone 11",
+  "iPad Pro (11-inch) (2nd generation)"
 ])
 
 # languages([
