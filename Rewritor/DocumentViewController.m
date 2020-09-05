@@ -23,6 +23,9 @@
 	self.view = [[DocumentEditingView alloc] init];
 }
 
+// TODO: Search, find and replace
+// iPad design first (copy mac apps), then make work on iPhone
+
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	
